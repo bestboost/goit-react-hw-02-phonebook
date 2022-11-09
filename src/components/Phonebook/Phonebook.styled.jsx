@@ -24,14 +24,21 @@ border-radius: ${p => p.theme.radii.normal};
    
 `;
 
-export const CallToAction = styled.p`
+export const TypeName = styled.p`
 margin: ${p => p.theme.space[0]}px;
 margin-bottom: ${p => p.theme.space[3]}px;
 color: ${p => p.theme.colors.title};
 font-size: ${p =>p.theme.fontSizes.l}px;
 `;
 
-export const TypeName = styled.input`
+export const TypePhone = styled.p`
+margin: ${p => p.theme.space[0]}px;
+margin-bottom: ${p => p.theme.space[3]}px;
+color: ${p => p.theme.colors.title};
+font-size: ${p =>p.theme.fontSizes.l}px;
+`;
+
+export const InputName = styled.input`
 width: 50%;
 padding: ${p => p.theme.space[2]}px;
 margin-bottom: ${p => p.theme.space[5]}px;
@@ -42,12 +49,29 @@ border-color: ${p => p.theme.colors.border};
 border-radius: ${p => p.theme.radii.normal};
 
 :hover, 
-:focus: ${p => p.theme.colors.hover};
+:focus{ 
+    border-color:${p => p.theme.colors.hover}};
 
+`;
+
+export const InputPhone = styled.input`
+width: 50%;
+padding: ${p => p.theme.space[2]}px;
+margin-bottom: ${p => p.theme.space[5]}px;
+font-size: ${p => p.theme.fontSizes.m}px;
+color: ${p => p.theme.colors.text};
+border: ${p => p.theme.border.normal};
+border-color: ${p => p.theme.colors.border};
+border-radius: ${p => p.theme.radii.normal};
+:hover, 
+:focus{ 
+    border-color:${p => p.theme.colors.hover}};
 `;
 
 export const AddButton = styled.button`
 width: 40%;
+transition-duration: 0.4s;
+cursor: pointer;
 margin: ${p => p.theme.space[0]}px;
     padding: ${p => p.theme.space[2]}px;
     font-size: ${p => p.theme.fontSizes.m}px;
@@ -56,6 +80,12 @@ margin: ${p => p.theme.space[0]}px;
     border: ${p => p.theme.border.normal};
     border-color: ${p => p.theme.colors.border};
     border-radius: ${p => p.theme.radii.normal};
+    box-shadow: ${p => p.theme.shadows.profile};
+
+:hover, 
+:focus{ 
+    background-color: ${p => p.theme.colors.hover}};
+
             
 `;
 

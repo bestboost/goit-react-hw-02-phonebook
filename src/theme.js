@@ -34,9 +34,7 @@ export const theme = {
 },
 
     shadows: {
-        profile: '0 0 4px 1px rgb(201, 199, 199)',
-        friendList: '0px 2px 5px 2px rgb(201, 199, 199)',
-        transaction: '0px 2px 4px rgb(201, 199, 199)',
+        profile: '0 0 2px 1px #dcdcde',
     }
 
 }
