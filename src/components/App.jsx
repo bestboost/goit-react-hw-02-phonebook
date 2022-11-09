@@ -1,6 +1,9 @@
+import { Box } from '../components/Box';
+import Phonebook from 'components/Phonebook/Phonebook'
+
 export const App = () => {
   return (
-    <div
+    <Box
       style={{
         height: '100vh',
         display: 'flex',
@@ -10,7 +13,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React homework template
-    </div>
+      <Phonebook/>
+    </Box>
   );
 };
