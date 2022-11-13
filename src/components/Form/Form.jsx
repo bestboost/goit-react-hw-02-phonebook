@@ -15,28 +15,32 @@ class Forms extends Component {
         name: '',
         number: '',
         };
+
+  nameId = nanoid(); 
+  numberId = nanoid();
  
  handelChange = e => {
-    const {name, value} = e.currentTarget;
-    this.setState({ [name]:value });
+    const {name, value, id} = e.currentTarget;
+    this.setState({ [name]: value, id});
  };
 
  handelSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
-
+ 
+   this.props.onSubmit(this.state);
+   // this.props.onSubmit(this.id);
     this.reset ();
- };
+ }; 
 
  reset = () => {
-    this.setState({name: '', number: ''})
+    this.setState({name: '', number: '', id:''})
  }
 
  render () {
     return (
           <Form onSubmit={this.handelSubmit}>
-               <TypeName>Name</TypeName>
-               <InputName
+               <TypeName htmlFor={this.nameId}>Name</TypeName>
+               <InputName id={this.nameId}
                    type="text"
                    name="name"
                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -45,8 +49,8 @@ class Forms extends Component {
                    value={this.state.name}
                    onChange={this.handelChange}
                    />
-               <TypePhone>Number</TypePhone>    
-               <InputPhone
+               <TypePhone htmlFor={this.numberId}>Number</TypePhone>    
+               <InputPhone id={this.numberId}
                    type="tel"
                    name="number"
                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

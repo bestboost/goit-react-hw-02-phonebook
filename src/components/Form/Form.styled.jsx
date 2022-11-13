@@ -62,7 +62,6 @@ border-radius: ${p => p.theme.radii.normal};
 
 export const AddButton = styled.button`
 width: 40%;
-transition-duration: 0.4s;
 cursor: pointer;
 margin: ${p => p.theme.space[0]}px;
     padding: ${p => p.theme.space[2]}px;
