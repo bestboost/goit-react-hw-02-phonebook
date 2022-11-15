@@ -28,7 +28,7 @@ class Forms extends Component {
     e.preventDefault();
  
    this.props.onSubmit(this.state);
-   // this.props.onSubmit(this.id);
+
     this.reset ();
  }; 
 

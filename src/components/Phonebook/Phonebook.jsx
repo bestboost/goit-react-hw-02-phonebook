@@ -12,35 +12,31 @@ class Phonebook extends Component {
     };
    
       state = {
-        contacts: []
+        contacts: [{name: '', number: '', id:''}],
+    
         };   
 
 
-    formSubmitHandler = ({name, number, id}) => {
-        this.setState({
-           name,
-          number, 
-            id
-        })
-        
-    }   
-
+    formSubmitHandler = ({name, number, id}) => {        
+        this.setState({contacts:[{name, number, id}]})      
+    };  
+    
+   
   
- 
  render () {
 
-     return (
+         return (
         <Box>
            <Tiltle>Phonebook</Tiltle> 
            <Forms onSubmit={this.formSubmitHandler} />              
            <Contacts>Contacts</Contacts>
              <ContactBox>
                 <ContactList > 
-                    {/* {contacts.map(contact =>  (           */}
-                        <ContactItem key={this.state.id}>
-                            <ContactName>{this.state.name}{this.state.number}</ContactName>
+                    {this.state.contacts.map(contact => (          
+                        <ContactItem key={contact.id}>
+                            <ContactName>{contact.name}{contact.number}</ContactName>
                         </ContactItem>
-                     {/* ))} */}
+                      ))}
                 </ContactList>
              </ContactBox>      
         </Box>   
