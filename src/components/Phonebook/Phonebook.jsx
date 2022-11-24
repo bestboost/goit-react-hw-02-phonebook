@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import  {Tiltle, ContactBox, Contacts, ContactList, ContactItem, ContactName} from './Phonebook.styled';
 import { Box } from '../Box';
 import Forms from 'components/Form/Form';
+import { nanoid } from 'nanoid';
+import { useCallback } from 'react';
 
 class Phonebook extends Component {
     static propTypes = {
@@ -12,17 +14,44 @@ class Phonebook extends Component {
     };
    
       state = {
-        contacts: [{name: '', number: '', id:''}],
+        contacts: [],
     
         };   
 
 
-    formSubmitHandler = ({name, number, id}) => {        
-        this.setState({contacts:[{name, number, id}]})      
-    };  
+    formSubmitHandler = ({name, number}) => {     
+      const contact = {
+        name,
+         number,
+          id: nanoid(),
+      }   
+        this.setState(prevState =>
+          ({contacts: [contact, ...prevState.contacts]})      
+    )};  
     
-   
-  
+  //  addContact = data => {
+  //   const contact = {
+  //     name,
+  //      number, 
+  //      id,
+  //   }
+  //  }
+
+  //    formSubmitHandler = ({name, number, id}) => {        
+  //       this.setState(prevState => {
+  //     return{contacts: prevState, ...({contacts:[{name, number, id}]})      
+  //       };
+  //   });
+
+  //  };  
+
+  //  this.setState(({contacts}) => ({
+  //   contacts: contacts.map( contact => 
+  //     contacts.id === contactsId ? {...contact, complited: !contact.complited} 
+  //     : contact),
+  // }))
+
+
  render () {
 
          return (
@@ -34,7 +63,7 @@ class Phonebook extends Component {
                 <ContactList > 
                     {this.state.contacts.map(contact => (          
                         <ContactItem key={contact.id}>
-                            <ContactName>{contact.name}{contact.number}</ContactName>
+                            <ContactName>{contact.name}: {contact.number}</ContactName>
                         </ContactItem>
                       ))}
                 </ContactList>
