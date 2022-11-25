@@ -36,9 +36,15 @@ class Forms extends Component {
     this.setState({name: '', number: '', id:''})
  }
 
+//  Alert = (name) => {
+//  message = {name} `is already in contacts.`
+//  alert(message);
+//  }
+
  render () {
     return (
           <Form onSubmit={this.handelSubmit}>
+
                <TypeName htmlFor={this.nameId}>Name</TypeName>
                <InputName id={this.nameId}
                    type="text"

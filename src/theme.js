@@ -14,10 +14,10 @@ export const theme = {
     space:[0, 2, 4, 8, 18, 32, 64, 128, 256],
 
     fontSizes:{
-        s: 15,
-        m: 20,
-        l: 25,
-        xl: 35,
+        s: 10,
+        m: 15,
+        l: 20,
+        xl:30,
 
     },
 

@@ -7,7 +7,7 @@ flex-direction: column;
 aline-items: flex-start;
 width: 450px;
 margin: ${p => p.theme.space[3]}px;
-margin-bottom: ${p => p.theme.space[5]}px;
+margin-bottom: ${p => p.theme.space[4]}px;
 padding: ${p => p.theme.space[4]}px;
 
 border: ${p => p.theme.border.normal};
@@ -33,7 +33,7 @@ font-size: ${p =>p.theme.fontSizes.l}px;
 export const InputName = styled.input`
 width: 50%;
 padding: ${p => p.theme.space[2]}px;
-margin-bottom: ${p => p.theme.space[5]}px;
+margin-bottom: ${p => p.theme.space[4]}px;
 font-size: ${p => p.theme.fontSizes.m}px;
 color: ${p => p.theme.colors.text};
 border: ${p => p.theme.border.normal};
@@ -49,7 +49,7 @@ border-radius: ${p => p.theme.radii.normal};
 export const InputPhone = styled.input`
 width: 50%;
 padding: ${p => p.theme.space[2]}px;
-margin-bottom: ${p => p.theme.space[5]}px;
+margin-bottom: ${p => p.theme.space[4]}px;
 font-size: ${p => p.theme.fontSizes.m}px;
 color: ${p => p.theme.colors.text};
 border: ${p => p.theme.border.normal};
