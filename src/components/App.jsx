@@ -44,6 +44,9 @@ class App extends Component {
 
   render () {
     const {contacts, filter, name, number, id} = this.state
+    const normolizedFilter = this.state.filter.toLowerCase()
+    const visibleContacts = this.state.contacts.filter(contact => 
+      contact.name.toLowerCase().includes(normolizedFilter),)
   return (
     <Box
       style={{
@@ -60,7 +63,7 @@ class App extends Component {
       <Forms onSubmit={this.formSubmitHandler} />              
            <Contacts>Contacts</Contacts>
       <Filter value={filter} onChange={this.nameFilter}/>     
-      <Phonebook contacts ={contacts} name={name} number={number} id={id}/>
+      <Phonebook contacts ={visibleContacts} />
     </Box>
   );
 };
