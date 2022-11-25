@@ -30,7 +30,8 @@ export const theme = {
     },
 
     radii:{
-      normal: '4px',
+        round: '50%',
+        normal: '4px',
 },
 
     shadows: {

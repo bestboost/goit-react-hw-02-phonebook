@@ -5,7 +5,7 @@ import { Tiltle, Contacts} from './App.styled';
 import Phonebook from 'components/Phonebook/Phonebook'
 import Forms from 'components/Form/Form';
 import Filter from './Filter/Filter';
-
+import basicContacts from '../basicContacts';
 
 
 class App extends Component {
@@ -18,12 +18,8 @@ class App extends Component {
  };
 
  state = {
-  contacts: [ 
-        {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-        {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-        {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-        {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
-],
+  contacts: basicContacts,
+
   filter: '',
   };   
 
@@ -41,12 +37,18 @@ class App extends Component {
     this.setState({filter: e.currentTarget.value});
   };
   
+  deleteContact = nameId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== nameId),
+    }));
+  };
 
   render () {
-    const {contacts, filter, name, number, id} = this.state
-    const normolizedFilter = this.state.filter.toLowerCase()
-    const visibleContacts = this.state.contacts.filter(contact => 
+    const  {filter, contacts} = this.state
+    const normolizedFilter = filter.toLowerCase()
+    const visibleContacts = contacts.filter(contact => 
       contact.name.toLowerCase().includes(normolizedFilter),)
+        
   return (
     <Box
       style={{
@@ -63,7 +65,7 @@ class App extends Component {
       <Forms onSubmit={this.formSubmitHandler} />              
            <Contacts>Contacts</Contacts>
       <Filter value={filter} onChange={this.nameFilter}/>     
-      <Phonebook contacts ={visibleContacts} />
+      <Phonebook contacts ={visibleContacts} onDeleteContact={this.deleteContact}/>
     </Box>
   );
 };

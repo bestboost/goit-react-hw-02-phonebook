@@ -25,21 +25,20 @@ class Forms extends Component {
  };
 
  handelSubmit = e => {
+  
     e.preventDefault();
- 
-   this.props.onSubmit(this.state);
 
-    this.reset ();
+//   alert(this.state.name + ' is already in contacts')
+  this.props.onSubmit(this.state)
+
+
+   this.reset ();
  }; 
 
  reset = () => {
     this.setState({name: '', number: '', id:''})
  }
 
-//  Alert = (name) => {
-//  message = {name} `is already in contacts.`
-//  alert(message);
-//  }
 
  render () {
     return (
