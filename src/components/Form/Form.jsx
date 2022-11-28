@@ -1,19 +1,22 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import  {Form, TypeName, InputName, TypePhone, InputPhone, AddButton} from './Form.styled';
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid'
+ 
 
 class Forms extends Component {
     static propTypes = {
        state: PropTypes.shape ({
         name: PropTypes.string.isRequired,
-        number: PropTypes.number.isRequired
+        number: PropTypes.number.isRequired,
+        contacts: PropTypes.array.isRequired,
        })
     };
    
       state = {
         name: '',
         number: '',
+        contacts: this.props.contacts,
         };
 
   nameId = nanoid(); 
@@ -21,17 +24,31 @@ class Forms extends Component {
  
  handelChange = e => {
     const {name, value, id} = e.currentTarget;
+   
     this.setState({ [name]: value, id});
+    
  };
 
+
+
+ alertMessage =  e => {
+
+   const repit = this.props.contacts.includes(this.state.name)
+
+   if (repit === true){
+
+    alert(this.state.name + ' is already in contacts');
+      e.preventDefault();
+       this.reset ()}
+        else {return};
+      }
+
  handelSubmit = e => {
-  
+
     e.preventDefault();
-
-//   alert(this.state.name + ' is already in contacts')
-  this.props.onSubmit(this.state)
-
-
+  
+ this.props.onSubmit(this.state)
+  
    this.reset ();
  }; 
 
@@ -41,9 +58,9 @@ class Forms extends Component {
 
 
  render () {
+
     return (
           <Form onSubmit={this.handelSubmit}>
-
                <TypeName htmlFor={this.nameId}>Name</TypeName>
                <InputName id={this.nameId}
                    type="text"
@@ -64,7 +81,7 @@ class Forms extends Component {
                    value={this.state.number}
                    onChange={this.handelChange}
                    />
-                <AddButton type="submit">Add contact</AddButton>    
+                <AddButton type="submit" onClick={this.alertMessage}>Add contact</AddButton>  
             </Form> 
     )}
 };

@@ -7,7 +7,7 @@ import  {ContactBox, ContactList, ContactItem, ContactName, DeleteButton, Point}
 class Phonebook extends Component {
     static propTypes = {
        state: PropTypes.shape ({
-
+        contacts: PropTypes.array.isRequired,
        })
     };
    
@@ -16,15 +16,14 @@ class Phonebook extends Component {
   
         };   
 
-
- render () {
+   render () {
 
          return (
             <Box>
              <ContactBox>
                 <ContactList > 
                     {this.props.contacts.map(contact => (          
-                        <ContactItem key={contact.id}>
+                        <ContactItem key={contact.id} >
                           <Point></Point>
                             <ContactName>{contact.name}: {contact.number}</ContactName>
                           <DeleteButton onClick={() => this.props.onDeleteContact(contact.id)}>Delete</DeleteButton> 

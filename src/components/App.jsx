@@ -19,7 +19,6 @@ class App extends Component {
 
  state = {
   contacts: basicContacts,
-
   filter: '',
   };   
 
@@ -28,10 +27,13 @@ class App extends Component {
       name,
        number,
         id,
-    }   
+    }         
+  
       this.setState(prevState =>
-        ({contacts: [contact, ...prevState.contacts]})      
-  )};  
+        ({contacts: [contact, ...prevState.contacts]})
+      )   
+  };  
+  
   
   nameFilter = e => {
     this.setState({filter: e.currentTarget.value});
@@ -44,11 +46,13 @@ class App extends Component {
   };
 
   render () {
-    const  {filter, contacts} = this.state
-    const normolizedFilter = filter.toLowerCase()
+    const  {filter, contacts} = this.state;
+    const normolizedFilter = filter.toLowerCase();
     const visibleContacts = contacts.filter(contact => 
-      contact.name.toLowerCase().includes(normolizedFilter),)
-        
+      contact.name.toLowerCase().includes(normolizedFilter),);
+      const sameName = visibleContacts.map(contact => contact.name)
+      
+
   return (
     <Box
       style={{
@@ -62,10 +66,10 @@ class App extends Component {
       }}
     >
            <Tiltle>Phonebook</Tiltle> 
-      <Forms onSubmit={this.formSubmitHandler} />              
+      <Forms  onSubmit={this.formSubmitHandler} contacts={sameName}/>   
            <Contacts>Contacts</Contacts>
       <Filter value={filter} onChange={this.nameFilter}/>     
-      <Phonebook contacts ={visibleContacts} onDeleteContact={this.deleteContact}/>
+      <Phonebook contacts={visibleContacts} onDeleteContact={this.deleteContact}/>
     </Box>
   );
 };
