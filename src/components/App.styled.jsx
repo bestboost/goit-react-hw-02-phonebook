@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import  {style}  from 'styled-system';
-
 
 export const Tiltle = styled.h1`
 margin: ${p => p.theme.space[3]}px;
