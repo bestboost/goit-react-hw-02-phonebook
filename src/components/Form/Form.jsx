@@ -1,39 +1,39 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import  {Form, TypeName, InputName, TypePhone, InputPhone, AddButton} from './Form.styled';
-import {nanoid} from 'nanoid'
- 
+import {nanoid} from 'nanoid'; 
+
 
 class Forms extends Component {
     static propTypes = {
        state: PropTypes.shape ({
-        name: PropTypes.string.isRequired,
-        number: PropTypes.number.isRequired,
         contacts: PropTypes.array.isRequired,
+        onSubmit: PropTypes.func.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
        })
     };
    
       state = {
         name: '',
-        number: '',
-        contacts: this.props.contacts,
+        number: '', 
+        id: nanoid(),
         };
 
-  nameId = nanoid(); 
-  numberId = nanoid();
- 
+       
+
+
  handelChange = e => {
-    const {name, value, id} = e.currentTarget;
+    const {name, value} = e.currentTarget;
    
-    this.setState({ [name]: value, id});
+    this.setState({ [name]: value});
     
  };
 
-
-
  alertMessage =  e => {
 
-   const repit = this.props.contacts.includes(this.state.name)
+   const repit = this.props.contacts.includes(this.state.name.toLowerCase())
 
    if (repit === true){
 
@@ -59,10 +59,12 @@ class Forms extends Component {
 
  render () {
 
+const  nameId = nanoid();
+const  numberId = nanoid();
     return (
           <Form onSubmit={this.handelSubmit}>
-               <TypeName htmlFor={this.nameId}>Name</TypeName>
-               <InputName id={this.nameId}
+               <TypeName htmlFor={nameId}>Name</TypeName>
+               <InputName id={nameId}
                    type="text"
                    name="name"
                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -71,8 +73,8 @@ class Forms extends Component {
                    value={this.state.name}
                    onChange={this.handelChange}
                    />
-               <TypePhone htmlFor={this.numberId}>Number</TypePhone>    
-               <InputPhone id={this.numberId}
+               <TypePhone htmlFor={numberId}>Number</TypePhone>    
+               <InputPhone id={numberId}
                    type="tel"
                    name="number"
                    pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

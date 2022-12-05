@@ -8,13 +8,10 @@ class Phonebook extends Component {
     static propTypes = {
        state: PropTypes.shape ({
         contacts: PropTypes.array.isRequired,
+        onDeleteContact: PropTypes.func.isRequired,
        })
     };
-   
-      state = {
-        contacts: this.props.contacts,
-  
-        };   
+    
 
    render () {
 

@@ -10,13 +10,6 @@ import basicContacts from '../basicContacts';
 
 class App extends Component {
 
-  static propTypes = {
-    state: PropTypes.shape ({
-     contacts: PropTypes.array.isRequired,
-     filter: PropTypes.string.isRequired,
-    })
- };
-
  state = {
   contacts: basicContacts,
   filter: '',
