@@ -5,20 +5,17 @@ import {nanoid} from 'nanoid';
 
 
 class Forms extends Component {
+
     static propTypes = {
        state: PropTypes.shape ({
         contacts: PropTypes.array.isRequired,
         onSubmit: PropTypes.func.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
        })
     };
    
       state = {
         name: '',
-        number: '', 
-        id: nanoid(),
+        number: '',  
         };
 
        
@@ -28,13 +25,13 @@ class Forms extends Component {
     const {name, value} = e.currentTarget;
    
     this.setState({ [name]: value});
-    
  };
 
  alertMessage =  e => {
 
-   const repit = this.props.contacts.includes(this.state.name.toLowerCase())
-
+   const normolizedName = this.state.name.toLowerCase();
+   const repit = this.props.contacts.includes(normolizedName)
+     
    if (repit === true){
 
     alert(this.state.name + ' is already in contacts');
@@ -46,21 +43,23 @@ class Forms extends Component {
  handelSubmit = e => {
 
     e.preventDefault();
-  
- this.props.onSubmit(this.state)
-  
+    const {name} = e.currentTarget;
+
+   this.props.onSubmit(Object.assign( {id:name.id}, this.state))
+
    this.reset ();
  }; 
 
  reset = () => {
-    this.setState({name: '', number: '', id:''})
+    this.setState({name: '', number: ''})
  }
 
 
  render () {
+   const nameId = nanoid();
+   const numberId = nanoid();
 
-const  nameId = nanoid();
-const  numberId = nanoid();
+
     return (
           <Form onSubmit={this.handelSubmit}>
                <TypeName htmlFor={nameId}>Name</TypeName>

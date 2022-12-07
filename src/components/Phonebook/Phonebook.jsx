@@ -6,10 +6,8 @@ import  {ContactBox, ContactList, ContactItem, ContactName, DeleteButton, Point}
 
 class Phonebook extends Component {
     static propTypes = {
-       state: PropTypes.shape ({
         contacts: PropTypes.array.isRequired,
         onDeleteContact: PropTypes.func.isRequired,
-       })
     };
     
 

@@ -32,9 +32,9 @@ class App extends Component {
     this.setState({filter: e.currentTarget.value});
   };
   
-  deleteContact = nameId => {
+  deleteContact = id => {
     this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== nameId),
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
 
@@ -43,7 +43,7 @@ class App extends Component {
     const normolizedFilter = filter.toLowerCase();
     const visibleContacts = contacts.filter(contact => 
       contact.name.toLowerCase().includes(normolizedFilter),);
-      const sameName = visibleContacts.map(contact => contact.name)
+    const sameName = visibleContacts.map(contact => contact.name.toLowerCase())
       
 
   return (
