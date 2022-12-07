@@ -5,7 +5,7 @@ import { Tiltle, Contacts} from './App.styled';
 import Phonebook from 'components/Phonebook/Phonebook'
 import Forms from 'components/Form/Form';
 import Filter from './Filter/Filter';
-import basicContacts from '../basicContacts';
+import basicContacts from '../../src/basicContacts';
 
 
 class App extends Component {
