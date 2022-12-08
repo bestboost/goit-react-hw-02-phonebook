@@ -7,10 +7,10 @@ import {nanoid} from 'nanoid';
 class Forms extends Component {
 
     static propTypes = {
-       state: PropTypes.shape ({
-        contacts: PropTypes.array.isRequired,
+      
+        contacts: PropTypes.arrayOf(PropTypes.string.isRequired),
         onSubmit: PropTypes.func.isRequired,
-       })
+      
     };
    
       state = {
@@ -43,9 +43,8 @@ class Forms extends Component {
  handelSubmit = e => {
 
     e.preventDefault();
-    const {name} = e.currentTarget;
 
-   this.props.onSubmit(Object.assign( {id:name.id}, this.state))
+   this.props.onSubmit(Object.assign({id:nanoid()}, this.state))
 
    this.reset ();
  }; 
